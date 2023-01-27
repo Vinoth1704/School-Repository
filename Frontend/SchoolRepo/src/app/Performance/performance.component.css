@@ -1,0 +1,13 @@
+.Heading {
+    color: white;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 7vh;
+    font-size: 4vh;
+}
+
+.background {
+    background-color: red;
+}
