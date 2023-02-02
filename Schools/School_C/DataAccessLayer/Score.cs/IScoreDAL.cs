@@ -5,6 +5,6 @@ namespace School.DAL
     public interface IScoreDAL
     {
         public bool CreateScore(Score Score);
-        public IQueryable<Score> GetAllScores();
+        public IEnumerable<Score> GetAllScores();
     }
 }

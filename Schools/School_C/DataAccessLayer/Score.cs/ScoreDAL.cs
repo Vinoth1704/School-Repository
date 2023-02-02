@@ -24,9 +24,10 @@ namespace School.DAL
             }
         }
 
-        public IQueryable<Score> GetAllScores()
+        public IEnumerable<Score> GetAllScores()
         {
             return (from Score in _db.scores!.Include(s => s.student).Include(s => s.subject) select Score);
+            // return (from Score in _db.scores select Score);
         }
     }
 }

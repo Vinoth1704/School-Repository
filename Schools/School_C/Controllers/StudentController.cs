@@ -1,4 +1,6 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using School.Models;
 using School.Services;
 
@@ -16,10 +18,15 @@ namespace School.Controllers
         [HttpPost]
         public IActionResult CreateStudent(Student student)
         {
+            if (student == null || string.IsNullOrEmpty(student.StudentName) || string.IsNullOrEmpty(student.Address)) return BadRequest("Student fields can't be empty");
             try
             {
                 _studentService.CreateStudent(student);
                 return Ok("Student created successfully");
+            }
+            catch (ValidationException studentNotValid)
+            {
+                return BadRequest(studentNotValid.Message);
             }
             catch (Exception exception)
             {

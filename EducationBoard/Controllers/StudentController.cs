@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using EducationBoard.Models;
 using EducationBoard.Services;
+using System.ComponentModel.DataAnnotations;
 
 namespace EducationBoard.Controllers
 {
@@ -13,13 +14,18 @@ namespace EducationBoard.Controllers
         {
             _studentService = studentService;
         }
+
         [HttpPost]
         public IActionResult CreateStudent(Student student)
         {
+            if (student == null || string.IsNullOrEmpty(student.StudentName)) return BadRequest("Student fields can't be empty");
             try
             {
-                _studentService.CreateStudent(student);
-                return Ok("Student created successfully");
+                return _studentService.CreateStudent(student) ? Ok("Student created successfully") : Problem("Internal error occured");
+            }
+            catch (ValidationException studentNotValid)
+            {
+                return BadRequest(studentNotValid.Message);
             }
             catch (Exception exception)
             {
@@ -30,7 +36,14 @@ namespace EducationBoard.Controllers
         [HttpGet]
         public IActionResult GetAllStudents()
         {
-            return Ok(_studentService.GetAllStudents());
+            try
+            {
+                return Ok(_studentService.GetAllStudents());
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
         }
     }
 }

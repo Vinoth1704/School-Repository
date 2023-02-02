@@ -1,4 +1,5 @@
 using EducationBoard.Models;
+using EducationBoard.Validations;
 
 namespace EducationBoard.DAL
 {
@@ -11,6 +12,7 @@ namespace EducationBoard.DAL
         }
         public bool CreateStudent(Student student)
         {
+            StudentValidation.IsStudentValid(student);
             try
             {
                 _db.Add(student);

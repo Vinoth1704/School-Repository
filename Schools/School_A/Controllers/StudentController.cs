@@ -1,5 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using School.Models;
 using School.Services;
 
@@ -17,6 +18,7 @@ namespace School.Controllers
         [HttpPost]
         public IActionResult CreateStudent(Student student)
         {
+            if (student == null || string.IsNullOrEmpty(student.StudentName) || string.IsNullOrEmpty(student.Address)) return BadRequest("Student fields can't be empty");
             try
             {
                 _studentService.CreateStudent(student);
@@ -35,7 +37,15 @@ namespace School.Controllers
         [HttpGet]
         public IActionResult GetAllStudents()
         {
-            return Ok(_studentService.GetAllStudents());
+            try
+            {
+                _studentService.GetAllStudents();
+                return Ok("Student created successfully");
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
         }
     }
 }

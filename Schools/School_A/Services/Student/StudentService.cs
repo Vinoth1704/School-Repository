@@ -10,6 +10,7 @@ namespace School.Services
         private IStudentDAL _studentDAL;
         private IMessagingService _messagingService;
         private int _schoolCode;
+
         public StudentService(IStudentDAL studentDAL, IMessagingService messagingService, IConfiguration configuration)
         {
             _studentDAL = studentDAL;
@@ -31,7 +32,17 @@ namespace School.Services
                         StudentName = lastStudent.StudentName,
                         SchoolID = _schoolCode
                     });
-                    _messagingService.SendMessage(studentDetails);
+                    try
+                    {
+                        if (_messagingService.ReceiveMessage())
+                        {
+                        _messagingService.SendMessage(studentDetails);
+                        }
+                    }
+                    catch
+                    {
+                        throw new Exception("Student created successfully but failed to send data to Education board");
+                    }
                     return true;
                 }
                 else
@@ -41,7 +52,7 @@ namespace School.Services
             }
             catch
             {
-                throw ;
+                throw;
             }
         }
 

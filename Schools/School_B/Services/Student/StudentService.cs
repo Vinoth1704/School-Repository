@@ -31,7 +31,18 @@ namespace School.Services
                         StudentName = lastStudent.StudentName,
                         SchoolID = _schoolCode
                     });
-                    _messagingService.SendMessage(studentDetails);
+                    try
+                    {
+                        _messagingService.SendMessage(studentDetails);
+                        if (_messagingService.ReceiveMessage())
+                        {
+
+                        }
+                    }
+                    catch
+                    {
+                        throw new Exception("Student created successfully but failed to send data to Education board");
+                    }
                     return true;
                 }
                 else
@@ -41,7 +52,7 @@ namespace School.Services
             }
             catch
             {
-                throw ;
+                throw;
             }
         }
 

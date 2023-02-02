@@ -13,12 +13,13 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<SchoolDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("School")));
-builder.Services.AddTransient<IStudentService, StudentService>();
 builder.Services.AddTransient<IStudentDAL, StudentDAL>();
-builder.Services.AddTransient<ISubjectService, SubjectService>();
 builder.Services.AddTransient<ISubjectDAL, SubjectDAL>();
-builder.Services.AddTransient<IScoreService, ScoreService>();
 builder.Services.AddTransient<IScoreDAL, ScoreDAL>();
+builder.Services.AddTransient<IStudentService, StudentService>();
+builder.Services.AddTransient<ISubjectService, SubjectService>();
+builder.Services.AddTransient<IScoreService, ScoreService>();
+builder.Services.AddTransient<IMessagingService, MessagingService>();
 
 builder.Services.AddAutoMapper(typeof(AutoMappers).Assembly);
 

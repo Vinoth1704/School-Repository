@@ -48,9 +48,16 @@ namespace School.Services
 
         public IEnumerable<ScoreDTO> GetAllScores()
         {
-            var scores = _scoreDAL.GetAllScores();
-            var scoresDTO = _mapper.Map<List<ScoreDTO>>(scores);
-            return scoresDTO;
+            try
+            {
+                var scores = _scoreDAL.GetAllScores();
+                var scoresDTO = _mapper.Map<List<ScoreDTO>>(scores);
+                return scoresDTO;
+            }
+            catch
+            {
+                throw new Exception("Internal server error");
+            }
         }
     }
 }

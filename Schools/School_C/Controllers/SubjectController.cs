@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using School.Models;
 using School.Services;
@@ -20,6 +21,10 @@ namespace School.Controllers
             {
                 _SubjectService.CreateSubject(Subject);
                 return Ok("Subject created successfully");
+            }
+             catch (ValidationException studentNotValid)
+            {
+                return BadRequest(studentNotValid.Message);
             }
             catch (Exception exception)
             {

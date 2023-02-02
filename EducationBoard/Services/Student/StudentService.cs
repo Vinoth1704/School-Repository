@@ -1,5 +1,7 @@
+using System.ComponentModel.DataAnnotations;
 using EducationBoard.DAL;
 using EducationBoard.Models;
+using EducationBoard.Validations;
 
 namespace EducationBoard.Services
 {
@@ -12,10 +14,14 @@ namespace EducationBoard.Services
         }
         public bool CreateStudent(Student student)
         {
+            StudentValidation.IsStudentValid(student);
             try
             {
-                _studentDAL.CreateStudent(student);
-                return true;
+                return _studentDAL.CreateStudent(student) ? true : false;
+            }
+            catch (ValidationException VE)
+            {
+                throw VE;
             }
             catch (Exception e)
             {
@@ -28,4 +34,4 @@ namespace EducationBoard.Services
             return _studentDAL.GetAllStudents();
         }
     }
-} 
+}

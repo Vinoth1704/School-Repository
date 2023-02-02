@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using EducationBoard.Models;
+using EducationBoard.Controllers;
 using Newtonsoft.Json.Linq;
 
 namespace EducationBoard.Services
@@ -10,12 +11,14 @@ namespace EducationBoard.Services
     public class MessagingService : IMessagingService
     {
         private IStudentService _studentService;
+        private StudentController _studentController;
         private IPerformanceService _performanceService;
 
-        public MessagingService(IStudentService studentService, IPerformanceService performanceService)
+        public MessagingService(IStudentService studentService, IPerformanceService performanceService, StudentController studentController)
         {
             _studentService = studentService;
             _performanceService = performanceService;
+            _studentController = studentController;
         }
         public void checkMessage()
         {
@@ -37,7 +40,14 @@ namespace EducationBoard.Services
                 if (Function == "Create Student")
                 {
                     var data = JsonConvert.DeserializeObject<Student>(message)!;
-                    _studentService.CreateStudent(data);
+                    if (_studentService.CreateStudent(data))
+                    {
+                        MessagingService.SendMessage("Student Created successfully");
+                    }
+                    else
+                    {
+                        MessagingService.SendMessage("Internal server occured");
+                    }
                 }
                 else if (Function == "Added Score")
                 {
@@ -48,6 +58,21 @@ namespace EducationBoard.Services
             };
 
             channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);
+        }
+
+        public static void SendMessage(string student)
+        {
+            var factory = new ConnectionFactory() { HostName = "localHost" };
+            var connection = factory.CreateConnection();
+            var channel = connection.CreateModel();
+
+            channel.ExchangeDeclare(exchange: "School", type: ExchangeType.Direct);
+            var message = student;
+            var body = Encoding.UTF8.GetBytes(message);
+            channel.BasicPublish(exchange: "School",
+                                routingKey: "Response",
+                                basicProperties: null,
+                                body: body);
         }
     }
 }

@@ -31,10 +31,9 @@ namespace EducationBoard.DAL
                                         Subject = s.Key,
                                         Average = Math.Round(s.Average(a => a.Mark), 2)
                                     }),
+                                NumberOfStudents = s.Select(s => s.RollNumber).Distinct().Count(),
                                 OverAllPercentage = Math.Round(s.Average(s => s.Mark), 2),
-                                NumberOfStudents = s.Count()
                             };
-
                 return query;
             }
             catch

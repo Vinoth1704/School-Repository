@@ -35,7 +35,6 @@ namespace School.DAL
             .HasOne<Subject>(st => st.subject)
             .WithMany(st => st.scores)
             .HasForeignKey(s => s.SubjectID);
-
         }
 
     }

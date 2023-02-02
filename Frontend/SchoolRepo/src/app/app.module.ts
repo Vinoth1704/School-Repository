@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { PerformanceComponent } from './Performance/performance.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OverallPerformanceComponent } from './overall-performance/overall-performance.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PerformanceComponent
+    PerformanceComponent,
+    OverallPerformanceComponent
   ],
   imports: [
     BrowserModule,

@@ -23,19 +23,24 @@ namespace SchoolC.Migrations
 
             modelBuilder.Entity("School.Models.Score", b =>
                 {
+                    b.Property<int>("ScoreID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ScoreID"));
+
+                    b.Property<float>("Mark")
+                        .HasColumnType("real");
+
                     b.Property<int>("RollNumber")
                         .HasColumnType("int");
 
                     b.Property<int>("SubjectID")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("Mark")
-                        .HasColumnType("decimal(18,2)");
+                    b.HasKey("ScoreID");
 
-                    b.Property<int>("ScoreID")
-                        .HasColumnType("int");
-
-                    b.HasKey("RollNumber", "SubjectID");
+                    b.HasIndex("RollNumber");
 
                     b.HasIndex("SubjectID");
 
@@ -48,12 +53,12 @@ namespace SchoolC.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RollNumber"), 3000L);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RollNumber"), 30000L);
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("StudentName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RollNumber");
@@ -69,7 +74,7 @@ namespace SchoolC.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SubjectID"));
 
-                    b.Property<string>("Name")
+                    b.Property<string>("SubjectName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("SubjectID");

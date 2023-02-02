@@ -1,4 +1,5 @@
 using EducationBoard.Models;
+using EducationBoard.Validations;
 
 namespace EducationBoard.DAL
 {
@@ -11,15 +12,16 @@ namespace EducationBoard.DAL
         }
         public bool CreateSubject(Subject subject)
         {
+            Subjectvalidation.IsSubjectValid(subject);
             try
             {
                 _db.Add(subject);
                 _db.SaveChanges();
                 return true;
             }
-            catch (Exception e)
+            catch
             {
-                throw e;
+                throw new Exception("Internal error occured");
             }
         }
 
@@ -29,9 +31,9 @@ namespace EducationBoard.DAL
             {
                 return (from Subject in _db.subjects select Subject);
             }
-            catch (Exception e)
+            catch
             {
-                throw e;
+                throw new Exception("Internal error occured");
             }
         }
     }

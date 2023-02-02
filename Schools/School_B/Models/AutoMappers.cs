@@ -7,8 +7,8 @@ namespace School.Models
         public AutoMappers()
         {
             CreateMap<Score, ScoreDTO>()
-            .ForMember(s => s.StudentName, src => src.MapFrom(sc => sc.student!.StudentName))
-            .ForMember(dto => dto.subjectName, opt => opt.MapFrom(src => src.subject!.SubjectName));
+            .ForMember(dto => dto.StudentName, src => src.MapFrom(s => s.student!.StudentName))
+            .ForMember(dto => dto.subjectName, src => src.MapFrom(s => s.subject!.SubjectName));
         }
     }
 }

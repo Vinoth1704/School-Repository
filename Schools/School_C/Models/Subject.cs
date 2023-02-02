@@ -4,10 +4,8 @@ namespace School.Models
 {
     public class Subject
     {
-        [Key]
         public int SubjectID { get; set; }
-        public string? Name { get; set; }
+        public string? SubjectName { get; set; }
         public ICollection<Score>? scores { get; set; }
-
     }
 }

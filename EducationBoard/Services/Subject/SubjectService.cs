@@ -1,5 +1,6 @@
 using EducationBoard.DAL;
 using EducationBoard.Models;
+using EducationBoard.Validations;
 
 namespace EducationBoard.Services
 {
@@ -12,10 +13,10 @@ namespace EducationBoard.Services
         }
         public bool CreateSubject(Subject subject)
         {
+            Subjectvalidation.IsSubjectValid(subject);
             try
             {
-                _SubjectDAL.CreateSubject(subject);
-                return true;
+                return _SubjectDAL.CreateSubject(subject) ? true : false;
             }
             catch (Exception e)
             {

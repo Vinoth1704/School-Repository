@@ -6,9 +6,9 @@ namespace School.Models
     {
         public AutoMappers()
         {
-            // CreateMap<Score, ScoreDTO>()
-            // .ForMember(s => s.Name, src => src.MapFrom(sc => sc.student.Name))
-            // .ForMember(dto => dto.subjectName, opt => opt.MapFrom(src => src.subject.Name));
+            CreateMap<Score, ScoreDTO>()
+            .ForMember(dto => dto.StudentName, src => src.MapFrom(s => s.student!.StudentName))
+            .ForMember(dto => dto.subjectName, src => src.MapFrom(s => s.subject!.SubjectName));
         }
     }
 }

@@ -6,5 +6,6 @@ namespace School.Services
     {
         public bool CreateScore(Score score);
         public IEnumerable<ScoreDTO> GetAllScores();
+        // public object GetAllScores();
     }
 }

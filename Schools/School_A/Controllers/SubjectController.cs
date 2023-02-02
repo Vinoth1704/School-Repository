@@ -17,12 +17,13 @@ namespace School.Controllers
         [HttpPost]
         public IActionResult CreateSubject(Subject Subject)
         {
+            if (Subject == null || string.IsNullOrEmpty(Subject.SubjectName)) return BadRequest("Subject fields can't be empty");
             try
             {
                 _SubjectService.CreateSubject(Subject);
                 return Ok("Subject created successfully");
             }
-             catch (ValidationException studentNotValid)
+            catch (ValidationException studentNotValid)
             {
                 return BadRequest(studentNotValid.Message);
             }
@@ -35,7 +36,14 @@ namespace School.Controllers
         [HttpGet]
         public IActionResult GetAllSubjects()
         {
-            return Ok(_SubjectService.GetAllSubjects());
+            try
+            {
+                return Ok(_SubjectService.GetAllSubjects());
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
         }
     }
 }

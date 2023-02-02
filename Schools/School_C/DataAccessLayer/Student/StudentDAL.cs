@@ -17,15 +17,21 @@ namespace School.DAL
                 _db.SaveChanges();
                 return true;
             }
-            catch (Exception exception)
+            catch
             {
-                throw exception;
+                throw new Exception();
             }
         }
 
         public IEnumerable<Student> GetAllStudents()
         {
             return (from Student in _db.students select Student);
+        }
+
+        public Student GetParticularStudent()
+        {
+            var lastRecord = _db.students!.OrderByDescending(s => s.RollNumber).FirstOrDefault()!;
+            return lastRecord;
         }
     }
 }

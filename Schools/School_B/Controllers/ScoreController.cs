@@ -36,7 +36,6 @@ namespace School.Controllers
         public IActionResult GetAllScores()
         {
             return Ok(_scoreService.GetAllScores());
-
         }
     }
 }

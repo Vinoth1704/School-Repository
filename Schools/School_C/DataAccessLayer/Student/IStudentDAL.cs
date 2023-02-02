@@ -6,5 +6,6 @@ namespace School.DAL
     {
         public bool CreateStudent(Student student);
         public IEnumerable<Student> GetAllStudents();
+        public Student GetParticularStudent();
     }
 }

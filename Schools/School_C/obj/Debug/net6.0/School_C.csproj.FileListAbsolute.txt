@@ -166,3 +166,5 @@ C:\Users\vinoth.jayakumar\Documents\GITHUB\School-Repository\Schools\School_C\ob
 C:\Users\vinoth.jayakumar\Documents\GITHUB\School-Repository\Schools\School_C\obj\Debug\net6.0\School_C.pdb
 C:\Users\vinoth.jayakumar\Documents\GITHUB\School-Repository\Schools\School_C\obj\Debug\net6.0\School_C.genruntimeconfig.cache
 C:\Users\vinoth.jayakumar\Documents\GITHUB\School-Repository\Schools\School_C\obj\Debug\net6.0\ref\School_C.dll
+C:\Users\vinoth.jayakumar\Documents\GITHUB\School-Repository\Schools\School_C\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\vinoth.jayakumar\Documents\GITHUB\School-Repository\Schools\School_C\bin\Debug\net6.0\RabbitMQ.Client.dll

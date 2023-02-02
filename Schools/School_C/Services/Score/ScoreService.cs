@@ -1,4 +1,5 @@
 using AutoMapper;
+using Newtonsoft.Json;
 using School.DAL;
 using School.Models;
 
@@ -8,30 +9,55 @@ namespace School.Services
     {
         private IScoreDAL _scoreDAL;
         private IMapper _mapper;
-        public ScoreService(IScoreDAL scoreDAL, IMapper mapper)
+        private IMessagingService _messagingService;
+
+        public ScoreService(IScoreDAL scoreDAL, IMapper mapper, IMessagingService messagingService)
         {
             _scoreDAL = scoreDAL;
             _mapper = mapper;
+            _messagingService = messagingService;
         }
 
         public bool CreateScore(Score score)
         {
-            try
+            if (_scoreDAL.CreateScore(score))
             {
-                _scoreDAL.CreateScore(score);
+                try
+                {
+                    string scoreDetails = JsonConvert.SerializeObject(new
+                    {
+                        Function = "Added Score",
+                        RollNumber = score.RollNumber,
+                        SubjectID = score.SubjectID,
+                        Mark = score.Mark
+                    });
+                    _messagingService.SendMessage(scoreDetails);
+                }
+                catch
+                {
+                    throw new Exception("Intrenal Error occured");
+                }
                 return true;
             }
-            catch (Exception e)
+            else
             {
-                throw e;
+                throw new Exception("Intrenal Error occured");
             }
+
         }
 
         public IEnumerable<ScoreDTO> GetAllScores()
         {
-            var scores = _scoreDAL.GetAllScores();
-            var scoresDTO = _mapper.Map<IEnumerable<ScoreDTO>>(scores);
-            return scoresDTO;
+            try
+            {
+                var scores = _scoreDAL.GetAllScores();
+                var scoresDTO = _mapper.Map<List<ScoreDTO>>(scores);
+                return scoresDTO;
+            }
+            catch
+            {
+                throw new Exception("Internal server error");
+            }
         }
     }
 }

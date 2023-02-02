@@ -1,3 +1,4 @@
+using EducationBoard.Controllers;
 using EducationBoard.DAL;
 using EducationBoard.Services;
 using Microsoft.EntityFrameworkCore;
@@ -19,19 +20,22 @@ builder.Services.AddDbContext<EducationBoardDbContext>(options =>
 });
 
 
+builder.Services.AddTransient<StudentController>();
 builder.Services.AddTransient<IStudentDAL, StudentDAL>();
 builder.Services.AddTransient<ISubjectDAL, SubjectDAL>();
 builder.Services.AddTransient<IPerformanceDAL, PerformanceDAL>();
 builder.Services.AddTransient<IStudentService, StudentService>();
 builder.Services.AddTransient<ISubjectService, SubjectService>();
 builder.Services.AddTransient<IPerformanceService, PerformanceService>();
+builder.Services.AddTransient<IMessagingService, MessagingService>();
 
 builder.Services.AddEndpointsApiExplorer();
 
 var studentService = builder.Services.BuildServiceProvider().GetService<IStudentService>()!;
 var performanceService = builder.Services.BuildServiceProvider().GetService<IPerformanceService>()!;
+var studentController = builder.Services.BuildServiceProvider().GetService<StudentController>()!;
 
-var message = new MessagingService(studentService, performanceService);
+var message = new MessagingService(studentService, performanceService, studentController);
 message.checkMessage();
 
 builder.Services.AddCors((setup) =>

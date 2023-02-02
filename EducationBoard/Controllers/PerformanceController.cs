@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using EducationBoard.Models;
 using EducationBoard.Services;
 
 namespace EducationBoard.Controllers
@@ -15,17 +14,29 @@ namespace EducationBoard.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllStudents()
+        public IActionResult GetAllScores()
         {
-            Console.WriteLine("Hello");
-            return Ok(_performanceService.GetAllScores());
+            try
+            {
+                return Ok(_performanceService.GetAllScores());
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
         }
 
         [HttpGet]
         public IActionResult GetAverage()
         {
-           
-            return Ok( _performanceService.GetAverage());
+            try
+            {
+                return Ok(_performanceService.GetAverage());
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
         }
     }
 }
