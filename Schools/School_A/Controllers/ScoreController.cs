@@ -10,19 +10,23 @@ namespace School.Controllers
     public class ScoreController : ControllerBase
     {
         private IScoreService _scoreService;
+
         public ScoreController(IScoreService scoreService)
         {
             _scoreService = scoreService;
         }
+
         [HttpPost]
         public IActionResult CreateScore(Score score)
         {
+            if (score == null)
+                BadRequest("Score Object can't be null");
             try
             {
-                _scoreService.CreateScore(score);
+                _scoreService.CreateScore(score!);
                 return Ok("Score created successfully");
             }
-             catch (ValidationException studentNotValid)
+            catch (ValidationException studentNotValid)
             {
                 return BadRequest(studentNotValid.Message);
             }
@@ -35,7 +39,14 @@ namespace School.Controllers
         [HttpGet]
         public IActionResult GetAllScores()
         {
-            return Ok(_scoreService.GetAllScores());
+            try
+            {
+                return Ok(_scoreService.GetAllScores());
+            }
+            catch (Exception exception)
+            {
+                return Problem(exception.Message);
+            }
         }
     }
 }

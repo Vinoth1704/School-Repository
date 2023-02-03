@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ConnectionServiceService } from '../Service/connection-service.service';
 
 @Component({
   selector: 'app-performance',
@@ -14,5 +13,7 @@ export class PerformanceComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
+  click() {
+    console.warn("hello");
+  }
 }

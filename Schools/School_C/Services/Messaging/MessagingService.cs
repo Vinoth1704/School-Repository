@@ -7,31 +7,47 @@ namespace School.Services
 {
     public class MessagingService : IMessagingService
     {
-        public void SendMessage(string student)
-        {
-            var factory = new ConnectionFactory() { HostName = "localHost" };
-            var connection = factory.CreateConnection();
-            var channel = connection.CreateModel();
+        private IModel channel;
+        private IConnectionFactory factory;
+        private IConnection connection;
 
-            channel.ExchangeDeclare(exchange: "School", type: ExchangeType.Direct);
-            var message = student;
-            var body = Encoding.UTF8.GetBytes(message);
-            channel.BasicPublish(exchange: "School",
-                                routingKey: "Common",
-                                basicProperties: null,
-                                body: body);
+        public MessagingService()
+        {
+            factory = new ConnectionFactory() { HostName = "localHost" };
+            connection = factory.CreateConnection();
+            channel = connection.CreateModel();
+            channel.QueueDeclare(
+                queue: "Common",
+                durable: false,
+                exclusive: false,
+                autoDelete: false,
+                arguments: null
+            );
         }
 
-        public bool ReceiveMessage()
+        public void SendMessage(string student)
         {
-            var factory = new ConnectionFactory() { HostName = "localhost" };
-            var connection = factory.CreateConnection();
-            var channel = connection.CreateModel();
+            var message = student;
+            var body = Encoding.UTF8.GetBytes(message);
+            channel.BasicPublish(
+                exchange: "",
+                routingKey: "Common",
+                basicProperties: null,
+                body: body
+            );
+        }
 
-            channel.ExchangeDeclare(exchange: "School", ExchangeType.Direct);
-            var queueName = channel.QueueDeclare().QueueName;
-            channel.QueueBind(queue: queueName, exchange: "School", routingKey: "Response");
-
+        public  bool ReceiveMessage()
+        {
+            channel = connection.CreateModel();
+            channel.QueueDeclare(
+                queue: "Response",
+                durable: false,
+                exclusive: false,
+                autoDelete: false,
+                arguments: null
+            );
+            channel.BasicQos(prefetchSize: 0, prefetchCount: 0, global: false);
 
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += (model, ea) =>
@@ -43,9 +59,8 @@ namespace School.Services
                     throw new Exception("Internal error occured at education board");
                 }
             };
+            channel.BasicConsume(queue: "Response", autoAck: true, consumer: consumer);
             return true;
         }
-
     }
-
 }

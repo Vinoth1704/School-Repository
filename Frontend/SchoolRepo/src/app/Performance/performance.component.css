@@ -8,6 +8,21 @@
     font-size: 4vh;
 }
 
+.list {
+    color: white;
+    background-color: grey;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: 5%;
+    height: 7vh;
+    font-size: 3vh;
+    margin-top: 1%;
+}
+
+
+
+
 .background {
     background-color: red;
 }

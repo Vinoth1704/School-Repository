@@ -19,6 +19,6 @@ export class ConnectionServiceService {
   }
 
   GetAllStudents(){
-    return this.http.get<Performance>(this.baseURL + `Performance/GetAverage`, { headers: this.headers });
+    return this.http.get<Performance>(this.baseURL + `Student/GetAllStudents`, { headers: this.headers });
   }
 }

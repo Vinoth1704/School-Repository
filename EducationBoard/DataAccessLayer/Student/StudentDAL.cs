@@ -1,15 +1,18 @@
 using EducationBoard.Models;
 using EducationBoard.Validations;
+using Microsoft.EntityFrameworkCore;
 
 namespace EducationBoard.DAL
 {
     public class StudentDAL : IStudentDAL
     {
         private EducationBoardDbContext _db;
+
         public StudentDAL(EducationBoardDbContext dbContext)
         {
             _db = dbContext;
         }
+
         public bool CreateStudent(Student student)
         {
             StudentValidation.IsStudentValid(student);
@@ -27,7 +30,7 @@ namespace EducationBoard.DAL
 
         public IEnumerable<Student> GetAllStudents()
         {
-            return (from Student in _db.students select Student);
+            return (from Student in _db.students!.Include(s => s.school) select Student);
         }
     }
 }

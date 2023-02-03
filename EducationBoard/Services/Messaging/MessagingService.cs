@@ -14,21 +14,31 @@ namespace EducationBoard.Services
         private StudentController _studentController;
         private IPerformanceService _performanceService;
 
-        public MessagingService(IStudentService studentService, IPerformanceService performanceService, StudentController studentController)
+        public MessagingService(
+            IStudentService studentService,
+            IPerformanceService performanceService,
+            StudentController studentController
+        )
         {
             _studentService = studentService;
             _performanceService = performanceService;
             _studentController = studentController;
         }
+
         public void checkMessage()
         {
             var factory = new ConnectionFactory() { HostName = "localhost" };
             var connection = factory.CreateConnection();
             var channel = connection.CreateModel();
 
-            channel.ExchangeDeclare(exchange: "School", ExchangeType.Direct);
-            var queueName = channel.QueueDeclare().QueueName;
-            channel.QueueBind(queue: queueName, exchange: "School", routingKey: "Common");
+            channel.QueueDeclare(
+                queue: "Common",
+                durable: false,
+                exclusive: false,
+                autoDelete: false,
+                arguments: null
+            );
+            channel.BasicQos(prefetchSize: 0, prefetchCount: 0, global: false);
 
             var consumer = new EventingBasicConsumer(channel);
             consumer.Received += (model, ea) =>
@@ -54,10 +64,9 @@ namespace EducationBoard.Services
                     var data = JsonConvert.DeserializeObject<Performance>(message)!;
                     _performanceService.InsertMark(data);
                 }
-
             };
 
-            channel.BasicConsume(queue: queueName, autoAck: true, consumer: consumer);
+            channel.BasicConsume(queue: "Common", autoAck: true, consumer: consumer);
         }
 
         public static void SendMessage(string student)
@@ -66,13 +75,22 @@ namespace EducationBoard.Services
             var connection = factory.CreateConnection();
             var channel = connection.CreateModel();
 
-            channel.ExchangeDeclare(exchange: "School", type: ExchangeType.Direct);
+            // channel.ExchangeDeclare(exchange: "School", type: ExchangeType.Direct);
+            channel.QueueDeclare(
+                queue: "Response",
+                durable: false,
+                exclusive: false,
+                autoDelete: false,
+                arguments: null
+            );
             var message = student;
             var body = Encoding.UTF8.GetBytes(message);
-            channel.BasicPublish(exchange: "School",
-                                routingKey: "Response",
-                                basicProperties: null,
-                                body: body);
+            channel.BasicPublish(
+                exchange: "",
+                routingKey: "Response",
+                basicProperties: null,
+                body: body
+            );
         }
     }
 }

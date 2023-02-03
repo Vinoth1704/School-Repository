@@ -5,9 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PerformanceComponent } from './Performance/performance.component';
-import { GridModule } from '@progress/kendo-angular-grid';
+import { FilterMenuComponent, FilterMenuContainerComponent, GridModule } from '@progress/kendo-angular-grid';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverallPerformanceComponent } from './overall-performance/overall-performance.component';
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { ListOfStudentsComponent } from './list-of-students/list-of-students.component';
+import { FilterModule } from '@progress/kendo-angular-filter';
 
 
 
@@ -15,12 +18,15 @@ import { OverallPerformanceComponent } from './overall-performance/overall-perfo
   declarations: [
     AppComponent,
     PerformanceComponent,
-    OverallPerformanceComponent
+    OverallPerformanceComponent,
+    ListOfStudentsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     GridModule,
+    ButtonsModule,
+    FilterModule,    
     BrowserAnimationsModule,
     HttpClientModule
   ],

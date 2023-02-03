@@ -11,14 +11,21 @@ namespace School.Controllers
     public class StudentController : ControllerBase
     {
         private IStudentService _studentService;
+
         public StudentController(IStudentService studentService)
         {
             _studentService = studentService;
         }
+
         [HttpPost]
         public IActionResult CreateStudent(Student student)
         {
-            if (student == null || string.IsNullOrEmpty(student.StudentName) || string.IsNullOrEmpty(student.Address)) return BadRequest("Student fields can't be empty");
+            if (
+                student == null
+                || string.IsNullOrEmpty(student.StudentName)
+                || string.IsNullOrEmpty(student.Address)
+            )
+                return BadRequest("Student fields can't be empty");
             try
             {
                 _studentService.CreateStudent(student);
@@ -39,8 +46,7 @@ namespace School.Controllers
         {
             try
             {
-                _studentService.GetAllStudents();
-                return Ok("Student created successfully");
+                return Ok(_studentService.GetAllStudents());
             }
             catch (Exception exception)
             {

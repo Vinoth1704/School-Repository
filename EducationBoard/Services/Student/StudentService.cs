@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations;
+using AutoMapper;
 using EducationBoard.DAL;
 using EducationBoard.Models;
 using EducationBoard.Validations;
@@ -8,9 +9,11 @@ namespace EducationBoard.Services
     public class StudentService : IStudentService
     {
         private IStudentDAL _studentDAL;
-        public StudentService(IStudentDAL studentDAL)
+        private IMapper _mapper;
+        public StudentService(IStudentDAL studentDAL, IMapper mapper)
         {
             _studentDAL = studentDAL;
+            _mapper = mapper;
         }
         public bool CreateStudent(Student student)
         {
@@ -29,9 +32,18 @@ namespace EducationBoard.Services
             }
         }
 
-        public IEnumerable<Student> GetAllStudents()
+        public IEnumerable<StudentsDTO> GetAllStudents()
         {
-            return _studentDAL.GetAllStudents();
+            try
+            {
+                var students = _studentDAL.GetAllStudents();
+                var studentsDto = _mapper.Map<List<StudentsDTO>>(students);
+                return studentsDto;
+            }
+            catch
+            {
+                throw new Exception("Internal server error");
+            }
         }
     }
 }

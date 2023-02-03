@@ -1,5 +1,5 @@
-export interface Performance {
+export interface student {
+    rollNumber:number
     studentName: string,
     schoolName: string,
-    
 }
