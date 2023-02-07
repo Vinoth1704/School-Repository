@@ -1,10 +1,8 @@
-using AutoMapper;
 using EducationBoard.Controllers;
 using EducationBoard.DAL;
 using EducationBoard.Models;
 using EducationBoard.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -10,7 +10,7 @@ import { Performance } from '../Model/Performance';
 })
 export class OverallPerformanceComponent implements OnInit {
 
-  average: Performance[] = [{ schoolName: '', overAllPercentage: 0, subjects: [{ subject: '', average: 0 }], numberOfStudents: 0 }];
+  average: Performance[] = [{ schoolName: '', overAllPercentage: 0, subjects: [{ subject: '', average: 0, numberOfStudentsEaachSubject: 0 }], numberOfStudents: 0 }];
 
   constructor(private connection: ConnectionServiceService) { }
 

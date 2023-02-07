@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FilterExpression } from '@progress/kendo-angular-filter';
-import { CompositeFilterDescriptor } from "@progress/kendo-data-query";
 import { student } from '../Model/Students';
 import { ConnectionServiceService } from '../Service/connection-service.service';
 

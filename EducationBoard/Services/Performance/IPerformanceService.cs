@@ -6,7 +6,6 @@ namespace EducationBoard.Services
     {
         public IEnumerable<Performance> GetAllScores();
         public bool InsertMark(Performance performance);
-        public object GetAverage();
+        public IEnumerable<PerformanceDTO> GetAverage();
     }
-
 }

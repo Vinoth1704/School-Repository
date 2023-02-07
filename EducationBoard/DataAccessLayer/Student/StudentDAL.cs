@@ -22,15 +22,22 @@ namespace EducationBoard.DAL
                 _db.SaveChanges();
                 return true;
             }
-            catch (Exception exception)
+            catch
             {
-                throw exception;
+                throw new Exception("Internal error occured");
             }
         }
 
         public IEnumerable<Student> GetAllStudents()
         {
-            return (from Student in _db.students!.Include(s => s.school) select Student);
+            try
+            {
+                return (from Student in _db.students!.Include(s => s.school) select Student);
+            }
+            catch
+            {
+                throw new Exception("Internal server error occured");
+            }
         }
     }
 }

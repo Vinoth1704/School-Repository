@@ -7,10 +7,12 @@ namespace EducationBoard.Services
     public class SubjectService : ISubjectService
     {
         private ISubjectDAL _SubjectDAL;
+
         public SubjectService(ISubjectDAL subjectDAL)
         {
             _SubjectDAL = subjectDAL;
         }
+
         public bool CreateSubject(Subject subject)
         {
             Subjectvalidation.IsSubjectValid(subject);
@@ -18,9 +20,9 @@ namespace EducationBoard.Services
             {
                 return _SubjectDAL.CreateSubject(subject) ? true : false;
             }
-            catch (Exception e)
+            catch
             {
-                throw e;
+                throw;
             }
         }
 

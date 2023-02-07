@@ -10,11 +10,13 @@ namespace EducationBoard.Services
     {
         private IStudentDAL _studentDAL;
         private IMapper _mapper;
+
         public StudentService(IStudentDAL studentDAL, IMapper mapper)
         {
             _studentDAL = studentDAL;
             _mapper = mapper;
         }
+
         public bool CreateStudent(Student student)
         {
             StudentValidation.IsStudentValid(student);
@@ -26,9 +28,9 @@ namespace EducationBoard.Services
             {
                 throw VE;
             }
-            catch (Exception e)
+            catch
             {
-                throw e;
+                throw;
             }
         }
 
