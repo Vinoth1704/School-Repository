@@ -7,11 +7,7 @@ namespace EducationBoard.Models
         public AutoMappers()
         {
             CreateMap<Student, StudentsDTO>()
-                .ForMember(dto => dto.StudentName, src => src.MapFrom(s => s.StudentName))
                 .ForMember(dto => dto.SchoolName, src => src.MapFrom(s => s.school!.SchoolName));
-
-            // CreateMap<PerformanceVM, PerformanceDTO>()
-            //     .ForMember(dto => dto.SchoolName, src => src.MapFrom(s => s.SchoolName));
         }
     }
 }
