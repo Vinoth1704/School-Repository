@@ -16,12 +16,12 @@ namespace School.Controllers
             _studentService = studentService;
         }
         [HttpPost]
-        public IActionResult CreateStudent(Student student)
+        public async Task<IActionResult> CreateStudent(Student student)
         {
             if (student == null || string.IsNullOrEmpty(student.StudentName) || string.IsNullOrEmpty(student.Address)) return BadRequest("Student fields can't be empty");
             try
             {
-                _studentService.CreateStudent(student);
+                await _studentService.CreateStudent(student);
                 return Ok("Student created successfully");
             }
             catch (ValidationException studentNotValid)
@@ -30,6 +30,7 @@ namespace School.Controllers
             }
             catch (Exception exception)
             {
+                Console.WriteLine("He");
                 return Problem(exception.Message);
             }
         }

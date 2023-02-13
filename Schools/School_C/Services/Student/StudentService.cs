@@ -16,7 +16,7 @@ namespace School.Services
             _messagingService = messagingService;
             _schoolCode = Convert.ToInt32(configuration.GetSection("SchoolSettings").GetSection("SchoolCode").Value);
         }
-        public bool CreateStudent(Student student)
+        public async Task<bool> CreateStudent(Student student)
         {
             StudentValidation.IsStudentValid(student);
             try
@@ -33,11 +33,7 @@ namespace School.Services
                     });
                     try
                     {
-                        _messagingService.SendMessage(studentDetails);
-                        if (_messagingService.ReceiveMessage())
-                        {
-
-                        }
+                        await _messagingService.SendMessage(studentDetails);
                     }
                     catch
                     {

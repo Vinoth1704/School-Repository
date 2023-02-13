@@ -14,11 +14,7 @@ namespace EducationBoard.Services
         private StudentController _studentController;
         private IPerformanceService _performanceService;
 
-        public MessagingService(
-            IStudentService studentService,
-            IPerformanceService performanceService,
-            StudentController studentController
-        )
+        public MessagingService(IStudentService studentService, IPerformanceService performanceService, StudentController studentController)
         {
             _studentService = studentService;
             _performanceService = performanceService;
@@ -44,6 +40,10 @@ namespace EducationBoard.Services
             consumer.Received += (model, ea) =>
             {
                 var body = ea.Body.ToArray();
+                string response = string.Empty;
+                var props = ea.BasicProperties;
+                var replyProps = channel.CreateBasicProperties();
+                replyProps.CorrelationId = props.CorrelationId;
                 var message = Encoding.UTF8.GetString(body);
                 var json = JObject.Parse(message);
                 string Function = (string)json["Function"]!;
@@ -52,12 +52,21 @@ namespace EducationBoard.Services
                     var data = JsonConvert.DeserializeObject<Student>(message)!;
                     if (_studentService.CreateStudent(data))
                     {
-                        MessagingService.SendMessage("Student Created successfully");
+                        response = "Student Created successfully";
                     }
                     else
                     {
-                        MessagingService.SendMessage("Internal server occured");
+                        response = "Internal error occured";
                     }
+                    Console.WriteLine(response);
+                    var responseBytes = Encoding.UTF8.GetBytes(response);
+                    channel.BasicPublish(
+                        exchange: string.Empty,
+                        routingKey: props.ReplyTo,
+                        basicProperties: replyProps,
+                        body: responseBytes
+                    );
+                    channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
                 }
                 else if (Function == "Added Score")
                 {
@@ -69,28 +78,6 @@ namespace EducationBoard.Services
             channel.BasicConsume(queue: "Common", autoAck: true, consumer: consumer);
         }
 
-        public static void SendMessage(string student)
-        {
-            var factory = new ConnectionFactory() { HostName = "localHost" };
-            var connection = factory.CreateConnection();
-            var channel = connection.CreateModel();
 
-            // channel.ExchangeDeclare(exchange: "School", type: ExchangeType.Direct);
-            channel.QueueDeclare(
-                queue: "Response",
-                durable: false,
-                exclusive: false,
-                autoDelete: false,
-                arguments: null
-            );
-            var message = student;
-            var body = Encoding.UTF8.GetBytes(message);
-            channel.BasicPublish(
-                exchange: "",
-                routingKey: "Response",
-                basicProperties: null,
-                body: body
-            );
-        }
     }
 }

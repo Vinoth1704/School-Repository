@@ -13,8 +13,8 @@ namespace School.DAL
         {
             try
             {
-                _db.Add(student);
-                _db.SaveChanges();
+                // _db.Add(student);
+                // _db.SaveChanges();
                 return true;
             }
             catch
