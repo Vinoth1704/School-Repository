@@ -15,20 +15,24 @@ namespace UnitTesting.Service
         private readonly StudentService _studentService;
         private readonly Mock<IStudentDAL> _studentDAL = new Mock<IStudentDAL>();
         private readonly Mock<IMessagingService> _messagingService = new Mock<IMessagingService>();
-        private readonly Mock<IConfiguration> _config = new Mock<IConfiguration>();
+        private readonly IConfiguration _config;
         private int _schoolCode;
 
         public StudentTestService()
         {
-            _studentService = new StudentService(_studentDAL.Object, _messagingService.Object, _config.Object);
-    
+            _config = new ConfigurationBuilder().AddJsonFile("appsettings.json").AddEnvironmentVariables().Build();
+            _schoolCode = Convert.ToInt32(_config.GetSection("SchoolSettings").GetSection("SchoolCode").Value);
+            _studentService = new StudentService(_studentDAL.Object, _messagingService.Object, _config);
         }
 
         [Fact]
         public void CreateStudent_ShouldReturnStatusCode200()
         {
             var students = StudentsMock.CreateStudent();
+            var studentDetails = StudentsMock.LastStudent();
             _studentDAL.Setup(studentDAL => studentDAL.CreateStudent(students)).Returns(true);
+            _studentDAL.Setup(StudentDAL => StudentDAL.GetParticularStudent()).Returns(studentDetails);
+            _messagingService.Setup(studentDAL => studentDAL.ReceiveMessage()).Returns(true);
             var Result = _studentService.CreateStudent(students);
             Result!.Should().BeTrue();
         }
@@ -46,8 +50,8 @@ namespace UnitTesting.Service
         {
             var students = StudentsMock.CreateStudent();
             _studentDAL.Setup(studentService => studentService.CreateStudent(students)).Returns(false);
-            var Result = _studentService.CreateStudent(students);
-            Result!.Should().BeFalse();
+            // var Result = _studentService.CreateStudent(students);
+            Assert.Throws<Exception>(()=>_studentService.CreateStudent(students));
         }
 
         [Fact]
@@ -61,14 +65,14 @@ namespace UnitTesting.Service
         [Fact]
         public void GetAllStudents_ShouldReturnStatusCode200()
         {
-            var subjects = SubjectsMock.ListOfSubjects();
-            _studentDAL.Setup(studentDAL => studentDAL.GetAllStudents()).Returns((IEnumerable<Student>)subjects);
+            var students = StudentsMock.ListOfStudents();
+            _studentDAL.Setup(studentDAL => studentDAL.GetAllStudents()).Returns(students);
             var Result = _studentService.GetAllStudents();
-            Assert.Equal(Result.Count(), subjects.Count);
+            Assert.Equal(Result.Count(), students.Count);
         }
 
         [Fact]
-        public void GGetAllStudents_ShouldReturnStatusCode500()
+        public void GetAllStudents_ShouldReturnStatusCode500()
         {
             _studentDAL.Setup(studentDAL => studentDAL.GetAllStudents()).Throws<Exception>();
             var Result = () => _studentService.GetAllStudents();

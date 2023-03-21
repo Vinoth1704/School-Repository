@@ -24,7 +24,7 @@ namespace School.Services
             );
         }
 
-        public bool CreateStudent(Student student)
+        public async Task<bool> CreateStudentAsync(Student student)
         {
             StudentValidation.IsStudentValid(student);
 
@@ -40,13 +40,14 @@ namespace School.Services
                         SchoolID = _schoolCode
                     }
                 );
+
                 try
                 {
-                    _messagingService.SendMessage(studentDetails);
-                    var response = _messagingService.ReceiveMessage();
-                    if (response == true)
+                    var response = await _messagingService.SendMessage(studentDetails);
+                    Console.WriteLine(response);
+                    // var response = _messagingService.ReceiveMessage();
+                    if (response == "Student Created successfully")
                     {
-                        Console.WriteLine("true");
                         return true;
                     }
                     else
@@ -56,16 +57,17 @@ namespace School.Services
                         );
                     }
                 }
-                catch (Exception)
+                catch
                 {
                     throw new Exception(
                         "Student created successfully but failed to send data to Education board"
                     );
                 }
+                // return true;
             }
             else
             {
-                throw new Exception("Internal error occured");
+                throw new Exception("Internal error occured...");
             }
         }
 

@@ -34,16 +34,19 @@ namespace EducationBoard.Services
                 autoDelete: false,
                 arguments: null
             );
-            channel.BasicQos(prefetchSize: 0, prefetchCount: 0, global: false);
+            channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
 
             var consumer = new EventingBasicConsumer(channel);
+            channel.BasicConsume(queue: "Common", autoAck: true, consumer: consumer);
             consumer.Received += (model, ea) =>
             {
                 var body = ea.Body.ToArray();
                 string response = string.Empty;
+
                 var props = ea.BasicProperties;
                 var replyProps = channel.CreateBasicProperties();
                 replyProps.CorrelationId = props.CorrelationId;
+
                 var message = Encoding.UTF8.GetString(body);
                 var json = JObject.Parse(message);
                 string Function = (string)json["Function"]!;
@@ -66,7 +69,7 @@ namespace EducationBoard.Services
                         basicProperties: replyProps,
                         body: responseBytes
                     );
-                    channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
+                    // channel.BasicAck(deliveryTag: ea.DeliveryTag, multiple: false);
                 }
                 else if (Function == "Added Score")
                 {
@@ -75,7 +78,7 @@ namespace EducationBoard.Services
                 }
             };
 
-            channel.BasicConsume(queue: "Common", autoAck: true, consumer: consumer);
+            
         }
 
 

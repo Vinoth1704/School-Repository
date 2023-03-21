@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "S+eVHZhg04FRWPO0a0E0mzBX3aL4d90ccqt7BUuVQGGuzyrN04O68tbOXNv3ifJsaH147nBc0wqlFK0CFS3s8Q==",
+  "dgSpecHash": "AfKjwCg13JmXUEpqhDCCzvbkszrdfP3LebnmSkyGa5da3IzHYF8seOeaaIItdV+3XDnNyAEiaig5HVNmzaxnDQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\Schools\\School_A\\School_A.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,7 @@
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.14\\microsoft.aspnetcore.authentication.jwtbearer.6.0.14.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",

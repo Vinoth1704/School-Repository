@@ -38,16 +38,17 @@ namespace UnitTesting.Controllers
         public void ViewAllSubjects_ShouldReturnStatusCode500()
         {
             _subjectservice.Setup(subjectservice => subjectservice.GetAllSubjects()).Throws<Exception>();
-            var Result = _subjectController.GetAllSubjects() as ObjectResult;
-            Assert.Equal(500, Result!.StatusCode);
+            // var Result = _subjectController.GetAllSubjects() as ObjectResult;
+            // Assert.Equal(500, Result!.StatusCode);
+            Assert.Throws<Exception>(() => _subjectController.GetAllSubjects());
         }
 
         [Theory]
         [InlineData(null)]
         public void CreateSubject_ShouldReturnStatusCode400_WhenSubjectnObjectIsNull(Subject Subject)
         {
-            var Result = _subjectController.CreateSubject(Subject) as ObjectResult;
-            Result!.StatusCode.Should().Be(400);
+            var Result = () => _subjectController.CreateSubject(Subject);
+            Result.Should().Throw<ValidationException>();
         }
 
         [Fact]
@@ -64,8 +65,9 @@ namespace UnitTesting.Controllers
         {
             Subject Subject = SubjectsMock.CreateSubject();
             _subjectservice.Setup(subjectservice => subjectservice.CreateSubject(Subject)).Throws<ValidationException>();
-            var result = _subjectController.CreateSubject(Subject) as ObjectResult;
-            result!.StatusCode.Should().Be(400);
+            // var result = _subjectController.CreateSubject(Subject) as ObjectResult;
+            // result!.StatusCode.Should().Be(400);
+            Assert.Throws<ValidationException>(() => _subjectController.CreateSubject(Subject));
         }
 
         [Fact]
@@ -73,8 +75,9 @@ namespace UnitTesting.Controllers
         {
             Subject Subject = SubjectsMock.CreateSubject();
             _subjectservice.Setup(subjectservice => subjectservice.CreateSubject(Subject)).Throws<Exception>();
-            var result = _subjectController.CreateSubject(Subject) as ObjectResult;
-            result!.StatusCode.Should().Be(500);
+            // var result = _subjectController.CreateSubject(Subject) as ObjectResult;
+            // result!.StatusCode.Should().Be(500);
+            Assert.Throws<Exception>(() => _subjectController.CreateSubject(Subject));
         }
     }
 }

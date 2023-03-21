@@ -1,10 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using School.Models;
 using School.Services;
 
 namespace School.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]/[action]")]
     public class ScoreController : ControllerBase
@@ -20,33 +22,33 @@ namespace School.Controllers
         public IActionResult CreateScore(Score score)
         {
             if (score == null)
-                BadRequest("Score Object can't be null");
-            try
-            {
-                _scoreService.CreateScore(score!);
-                return Ok("Score created successfully");
-            }
-            catch (ValidationException studentNotValid)
-            {
-                return BadRequest(studentNotValid.Message);
-            }
-            catch (Exception exception)
-            {
-                return Problem(exception.Message);
-            }
+                throw new ValidationException("Score Object can't be null");
+            // try
+            // {
+            _scoreService.CreateScore(score!);
+            return Ok("Score created successfully");
+            // }
+            // catch (ValidationException studentNotValid)
+            // {
+            //     return BadRequest(studentNotValid.Message);
+            // }
+            // catch (Exception exception)
+            // {
+            //     return Problem(exception.Message);
+            // }
         }
 
         [HttpGet]
         public IActionResult GetAllScores()
         {
-            try
-            {
+            // try
+            // {
                 return Ok(_scoreService.GetAllScores());
-            }
-            catch (Exception exception)
-            {
-                return Problem(exception.Message);
-            }
+            // }
+            // catch (Exception exception)
+            // {
+            //     return Problem(exception.Message);
+            // }
         }
     }
 }

@@ -7,11 +7,14 @@ namespace UnitTesting.Utility
 {
     public static class DbUtility
     {
-        private static readonly IConfiguration _config;
+        private static IConfiguration? _config;
+        private static int code;
         public static SchoolDbContext GetInMemoryDbContext()
         {
             var options = new DbContextOptionsBuilder<SchoolDbContext>().UseInMemoryDatabase(databaseName: "Local Db").Options;
-            return new SchoolDbContext(options,_config); ;
+             _config = new ConfigurationBuilder().AddJsonFile("appsettings.json").AddEnvironmentVariables().Build();
+            code = Convert.ToInt32(_config.GetSection("SchoolSettings").GetSection("SchoolCode").Value)*10000;
+            return new SchoolDbContext(options,_config!); ;
         }
         public static void SeedInMemoryDb(SchoolDbContext dbContext)
         {

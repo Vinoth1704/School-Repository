@@ -40,8 +40,8 @@ namespace UnitTesting.Service
         {
             var Subjects = SubjectsMock.CreateSubject();
             _SubjectDAL.Setup(SubjectService => SubjectService.CreateSubject(Subjects)).Returns(false);
-            var Result = _SubjectService.CreateSubject(Subjects);
-            Result!.Should().BeFalse();
+            // var Result = _SubjectService.CreateSubject(Subjects);
+            Assert.Throws<Exception>(()=>_SubjectService.CreateSubject(Subjects));
         }
 
         [Fact]

@@ -1,5 +1,6 @@
 using School.DAL;
 using School.Models;
+using School.Validations;
 
 namespace School.Services
 {
@@ -12,15 +13,10 @@ namespace School.Services
         }
         public bool CreateSubject(Subject subject)
         {
-            try
-            {
-                _SubjectDAL.CreateSubject(subject);
-                return true;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
+            Subjectvalidation.IsSubjectValid(subject);
+
+            if (_SubjectDAL.CreateSubject(subject)) return true; else throw new Exception("Internal error occured...");
+
         }
 
         public IEnumerable<Subject> GetAllSubjects()

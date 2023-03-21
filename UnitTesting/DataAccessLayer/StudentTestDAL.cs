@@ -21,7 +21,7 @@ namespace UnitTesting.DAL
         [Fact]
         public void CreateStudent_ShouldReturnTrue()
         {
-            Student student = new Student() { StudentName = "Alex", RollNumber = 10000, Address = "Coimbatore" };
+            Student student = new Student() { StudentName = "Alex", Address = "Coimbatore" };
             var result = _studentDAL.CreateStudent(student);
             result.Should().BeTrue();
         }

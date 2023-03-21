@@ -35,29 +35,29 @@ namespace School.Services
                 }
                 catch
                 {
-                    throw new Exception("Intrenal Error occured");
+                    throw new Exception("Score created successfully but failed to send data to Education board");
                 }
                 return true;
             }
             else
             {
-                throw new Exception("Intrenal Error occured");
+                throw new Exception("Internal Error occured....");
             }
 
         }
 
         public IEnumerable<ScoreDTO> GetAllScores()
         {
-            try
-            {
-                var scores = _scoreDAL.GetAllScores();
-                var scoresDTO = _mapper.Map<List<ScoreDTO>>(scores);
-                return scoresDTO;
-            }
-            catch
-            {
-                throw new Exception("Internal server error");
-            }
+            // try
+            // {
+            var scores = _scoreDAL.GetAllScores();
+            var scoresDTO = _mapper.Map<List<ScoreDTO>>(scores);
+            return scoresDTO;
+            // }
+            // catch
+            // {
+            //     throw new Exception("Internal server error");
+            // }
         }
     }
 }

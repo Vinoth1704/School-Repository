@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "bHRw22IE1PdYa/uUi3//VTevQ7VJp+LrMSNs6I+IBjEoaBY9TQhfNwrSMZY0i+kVntKSGH4dVidUOLHLEnmjuQ==",
+  "dgSpecHash": "OFbwH53PcGwJSl2Gf50gaN5e+/ff5UFpuD7fSoMHtHO9PWDBd3rrY7EQehR1V6EAJlyqA4x0h1qejFXGnbJCUA==",
   "success": true,
   "projectFilePath": "C:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\UnitTesting\\UnitTesting.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.aspnet.webpages\\3.2.9\\microsoft.aspnet.webpages.3.2.9.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.14\\microsoft.aspnetcore.authentication.jwtbearer.6.0.14.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.aspnetcore.hosting.abstractions\\2.2.0\\microsoft.aspnetcore.hosting.abstractions.2.2.0.nupkg.sha512",

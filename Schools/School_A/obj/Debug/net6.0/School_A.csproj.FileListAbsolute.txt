@@ -169,3 +169,4 @@ C:\Users\vinoth.jayakumar\Documents\GITHUB\School-Repository\Schools\School_A\ob
 C:\Users\vinoth.jayakumar\Documents\GITHUB\School-Repository\Schools\School_A\obj\Debug\net6.0\School_A.genruntimeconfig.cache
 C:\Users\vinoth.jayakumar\Documents\GITHUB\School-Repository\Schools\School_A\obj\Debug\net6.0\ref\School_A.dll
 C:\Users\vinoth.jayakumar\Documents\GITHUB\School-Repository\Schools\School_A\bin\Debug\net6.0\RabbitMQ.Client.dll
+C:\Users\vinoth.jayakumar\Documents\GITHUB\School-Repository\Schools\School_A\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

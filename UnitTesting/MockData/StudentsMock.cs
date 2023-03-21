@@ -18,5 +18,10 @@ namespace UnitTesting.MockData
         {
             return new Student() { Address = "Coimbatore", StudentName = "Alex" };
         }
+
+        public static Student LastStudent()
+        {
+            return new Student() { Address = "Coimbatore", StudentName = "Alex", RollNumber = 10001 };
+        }
     }
 }
