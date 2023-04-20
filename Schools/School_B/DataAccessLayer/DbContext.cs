@@ -35,6 +35,14 @@ namespace School.DAL
             .HasOne<Subject>(st => st.subject)
             .WithMany(st => st.scores)
             .HasForeignKey(s => s.SubjectID);
+
+            modelBuilder.Entity<Subject>().HasData(
+                new Subject { SubjectID = 1, SubjectName = "Tamil" },
+                new Subject { SubjectID = 2, SubjectName = "English" },
+                new Subject { SubjectID = 3, SubjectName = "Maths" },
+                new Subject { SubjectID = 4, SubjectName = "Science" },
+                new Subject { SubjectID = 5, SubjectName = "Social" }
+            );
         }
 
     }

@@ -95,6 +95,33 @@ namespace EducationBoard.Migrations
                     b.HasKey("SubjectID");
 
                     b.ToTable("subjects");
+
+                    b.HasData(
+                        new
+                        {
+                            SubjectID = 1,
+                            SubjectName = "Tamil"
+                        },
+                        new
+                        {
+                            SubjectID = 2,
+                            SubjectName = "English"
+                        },
+                        new
+                        {
+                            SubjectID = 3,
+                            SubjectName = "Maths"
+                        },
+                        new
+                        {
+                            SubjectID = 4,
+                            SubjectName = "Science"
+                        },
+                        new
+                        {
+                            SubjectID = 5,
+                            SubjectName = "Social"
+                        });
                 });
 
             modelBuilder.Entity("EducationBoard.Models.Performance", b =>

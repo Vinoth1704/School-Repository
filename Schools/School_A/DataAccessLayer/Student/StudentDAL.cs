@@ -37,7 +37,7 @@ namespace School.DAL
             }
         }
 
-        public Student GetParticularStudent()
+        public Student GetLastSavedStudent()
         {
             try
             {

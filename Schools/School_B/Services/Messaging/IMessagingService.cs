@@ -2,7 +2,7 @@ namespace School.Services
 {
     public interface IMessagingService
     {
-        public void SendMessage(string student);
-        public bool ReceiveMessage();
+        public Task<string> SendMessage(string student, CancellationToken cancellationToken = default);
+        // public Task<bool> ReceiveMessage();
     }
 }

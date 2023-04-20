@@ -18,16 +18,22 @@ namespace School.DAL
                 _db.SaveChanges();
                 return true;
             }
-            catch (Exception exception)
+            catch
             {
-                throw exception;
+                throw new Exception("Internal error occured...");
             }
         }
 
         public IEnumerable<Score> GetAllScores()
         {
-            return (from Score in _db.scores!.Include(s => s.student).Include(s => s.subject) select Score);
-            // return (from Score in _db.scores select Score);
+            try
+            {
+                return (from Score in _db.scores!.Include(s => s.student).Include(s => s.subject) select Score);
+            }
+            catch
+            {
+                throw new Exception("Internal error occured...");
+            }
         }
     }
 }

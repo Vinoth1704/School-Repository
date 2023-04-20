@@ -24,13 +24,13 @@ namespace School.Services
             );
         }
 
-        public async Task<bool> CreateStudentAsync(Student student)
+        public async Task<bool> CreateStudent(Student student)
         {
             StudentValidation.IsStudentValid(student);
 
             if (_studentDAL.CreateStudent(student))
             {
-                var lastStudent = _studentDAL.GetParticularStudent();
+                var lastStudent = _studentDAL.GetLastSavedStudent();
                 string studentDetails = JsonConvert.SerializeObject(
                     new
                     {

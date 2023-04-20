@@ -7,8 +7,8 @@ using School.Services;
 
 namespace School.Controllers
 {
-    [Authorize]
-    [ApiController] 
+    
+    [ApiController]
     [Route("[controller]/[action]")]
     public class StudentController : ControllerBase
     {
@@ -19,8 +19,9 @@ namespace School.Controllers
             _studentService = studentService;
         }
 
+        // [ObsoleteAttribute("This method is obsolete. Call CallNewMethod instead.", true)]
         [HttpPost]
-        public async Task<IActionResult> CreateStudentAsync(Student student)
+        public async Task<IActionResult> CreateStudent(Student student)
         {
             if (
                 student == null
@@ -30,7 +31,7 @@ namespace School.Controllers
                 throw new ValidationException("Student fields can't be empty");
             // try
             // {
-            await _studentService.CreateStudentAsync(student);
+            await _studentService.CreateStudent(student);
             return Ok(new { message = "Student created successfully" });
             // }
             // catch (ValidationException studentNotValid)
@@ -43,12 +44,12 @@ namespace School.Controllers
             // }
         }
 
-        [HttpGet]
+        // [ObsoleteAttribute("This method is obsolete. Call CallNewMethod instead.", false)]
+        [HttpGet("GetAllStudents")]
         public IActionResult GetAllStudents()
         {
             // try
             // {
-
             return Ok(_studentService.GetAllStudents());
 
             // }

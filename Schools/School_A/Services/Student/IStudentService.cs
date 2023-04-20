@@ -4,7 +4,7 @@ namespace School.Services
 {
     public interface IStudentService
     {
-        public Task<bool> CreateStudentAsync(Student student);
+        public Task<bool> CreateStudent(Student student);
         public IEnumerable<Student> GetAllStudents();
     }
 }

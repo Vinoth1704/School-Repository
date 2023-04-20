@@ -2,10 +2,12 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace EducationBoard.Migrations
 {
     /// <inheritdoc />
-    public partial class CreatedStudentdatabase : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -80,6 +82,18 @@ namespace EducationBoard.Migrations
                         principalTable: "subjects",
                         principalColumn: "SubjectID",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "subjects",
+                columns: new[] { "SubjectID", "SubjectName" },
+                values: new object[,]
+                {
+                    { 1, "Tamil" },
+                    { 2, "English" },
+                    { 3, "Maths" },
+                    { 4, "Science" },
+                    { 5, "Social" }
                 });
 
             migrationBuilder.CreateIndex(

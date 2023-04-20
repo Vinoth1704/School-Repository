@@ -1,4 +1,5 @@
 using School.Models;
+using School.Validations;
 
 namespace School.DAL
 {
@@ -11,27 +12,43 @@ namespace School.DAL
         }
         public bool CreateStudent(Student student)
         {
+            StudentValidation.IsStudentValid(student);
             try
             {
-                _db.Add(student);
-                _db.SaveChanges();
+                // _db.Add(student);
+                // _db.SaveChanges();
                 return true;
             }
             catch
             {
-                throw new Exception();
+                return false;
             }
         }
 
         public IEnumerable<Student> GetAllStudents()
         {
-            return (from Student in _db.students select Student);
+            try
+            {
+                return (from Student in _db.students select Student);
+            }
+            catch
+            {
+                throw new Exception("Interanl error occured...");
+            }
         }
 
-        public Student GetParticularStudent()
+        public Student GetLastSavedStudent()
         {
-            var lastRecord = _db.students!.OrderByDescending(s => s.RollNumber).FirstOrDefault()!;
-            return lastRecord;
+            try
+            {
+                var lastRecord = _db.students!.OrderByDescending(s => s.RollNumber).FirstOrDefault()!;
+                return lastRecord;
+            }
+            catch
+            {
+                throw new Exception("Interanl error occured...");
+            }
+
         }
     }
 }

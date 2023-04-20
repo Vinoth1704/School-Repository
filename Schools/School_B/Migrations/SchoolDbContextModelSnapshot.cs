@@ -7,7 +7,7 @@ using School.DAL;
 
 #nullable disable
 
-namespace SchoolB.Migrations
+namespace SchoolA.Migrations
 {
     [DbContext(typeof(SchoolDbContext))]
     partial class SchoolDbContextModelSnapshot : ModelSnapshot
@@ -53,7 +53,7 @@ namespace SchoolB.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RollNumber"), 20000L);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RollNumber"), 10000L);
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -80,6 +80,33 @@ namespace SchoolB.Migrations
                     b.HasKey("SubjectID");
 
                     b.ToTable("subjects");
+
+                    b.HasData(
+                        new
+                        {
+                            SubjectID = 1,
+                            SubjectName = "Tamil"
+                        },
+                        new
+                        {
+                            SubjectID = 2,
+                            SubjectName = "English"
+                        },
+                        new
+                        {
+                            SubjectID = 3,
+                            SubjectName = "Maths"
+                        },
+                        new
+                        {
+                            SubjectID = 4,
+                            SubjectName = "Science"
+                        },
+                        new
+                        {
+                            SubjectID = 5,
+                            SubjectName = "Social"
+                        });
                 });
 
             modelBuilder.Entity("School.Models.Score", b =>

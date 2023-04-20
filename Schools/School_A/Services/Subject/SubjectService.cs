@@ -14,9 +14,7 @@ namespace School.Services
         public bool CreateSubject(Subject subject)
         {
             Subjectvalidation.IsSubjectValid(subject);
-
             if (_SubjectDAL.CreateSubject(subject)) return true; else throw new Exception("Internal error occured...");
-
         }
 
         public IEnumerable<Subject> GetAllSubjects()

@@ -1,4 +1,5 @@
 using School.Models;
+using School.Validations;
 
 namespace School.DAL
 {
@@ -11,27 +12,28 @@ namespace School.DAL
         }
         public bool CreateSubject(Subject subject)
         {
+            Subjectvalidation.IsSubjectValid(subject);
             try
             {
                 _db.Add(subject);
                 _db.SaveChanges();
                 return true;
             }
-            catch (Exception e)
+            catch
             {
-                throw e;
+                throw new Exception("Internal error occured...");
             }
         }
 
-        public IQueryable<Subject> GetAllSubjects()
+        public IEnumerable<Subject> GetAllSubjects()
         {
             try
             {
                 return (from Subject in _db.subjects select Subject);
             }
-            catch (Exception e)
+            catch
             {
-                throw e;
+                throw new Exception("Internal error occured...");
             }
         }
     }

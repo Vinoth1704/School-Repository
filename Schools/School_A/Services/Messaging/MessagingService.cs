@@ -16,11 +16,12 @@ namespace School.Services
 
         public MessagingService()
         {
-            // _messagingService = messagingService;
 
             factory = new ConnectionFactory() { HostName = "localHost" };
             connection = factory.CreateConnection();
             channel = connection.CreateModel();
+
+            //Declaring Queue for receiving the message from the school service
             channel.QueueDeclare(
                 queue: "Common",
                 durable: false,
@@ -29,6 +30,7 @@ namespace School.Services
                 arguments: null
             );
 
+            //Declaring Queue for sending the response message to the school service
             channel.QueueDeclare(
                 queue: "Response",
                 durable: false,

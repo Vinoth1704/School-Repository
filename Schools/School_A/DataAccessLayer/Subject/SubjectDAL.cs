@@ -25,7 +25,7 @@ namespace School.DAL
             }
         }
 
-        public IQueryable<Subject> GetAllSubjects()
+        public IEnumerable<Subject> GetAllSubjects()
         {
             try
             {

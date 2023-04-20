@@ -26,7 +26,7 @@ namespace School.Controllers
             // try
             // {
             _scoreService.CreateScore(score!);
-            return Ok("Score created successfully");
+            return Created("Score created successfully",score);
             // }
             // catch (ValidationException studentNotValid)
             // {
@@ -43,7 +43,7 @@ namespace School.Controllers
         {
             // try
             // {
-                return Ok(_scoreService.GetAllScores());
+            return Ok(_scoreService.GetAllScores());
             // }
             // catch (Exception exception)
             // {
