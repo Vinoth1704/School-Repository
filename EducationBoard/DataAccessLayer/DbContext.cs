@@ -7,13 +7,18 @@ namespace EducationBoard.DAL
     {
         public EducationBoardDbContext(DbContextOptions<EducationBoardDbContext> options) : base(options)
         {
-
+    
+        }
+        public IEnumerable<Student> GetAllStudents()
+        {
+            return students!.FromSqlRaw("EXEC GetAllStudents").ToList();
         }
 
         public DbSet<School>? schools { get; set; }
         public DbSet<Student>? students { get; set; }
         public DbSet<Subject>? subjects { get; set; }
         public DbSet<Performance>? performances { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

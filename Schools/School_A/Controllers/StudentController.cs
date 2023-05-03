@@ -21,7 +21,7 @@ namespace School.Controllers
 
         // [ObsoleteAttribute("This method is obsolete. Call CallNewMethod instead.", true)]
         [HttpPost]
-        public async Task<IActionResult> CreateStudent(Student student)
+        public IActionResult CreateStudent(Student student)
         {
             if (
                 student == null
@@ -31,7 +31,7 @@ namespace School.Controllers
                 throw new ValidationException("Student fields can't be empty");
             // try
             // {
-            await _studentService.CreateStudent(student);
+            _studentService.CreateStudent(student);
             return Ok(new { message = "Student created successfully" });
             // }
             // catch (ValidationException studentNotValid)
@@ -45,7 +45,7 @@ namespace School.Controllers
         }
 
         // [ObsoleteAttribute("This method is obsolete. Call CallNewMethod instead.", false)]
-        [HttpGet("GetAllStudents")]
+        [HttpGet]
         public IActionResult GetAllStudents()
         {
             // try

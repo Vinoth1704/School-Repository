@@ -3658,11 +3658,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\Schools\\School_A\\School_A.csproj",
+      "projectUniqueName": "C:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\Schools\\School_A\\School_A.csproj",
       "projectName": "School_A",
-      "projectPath": "c:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\Schools\\School_A\\School_A.csproj",
+      "projectPath": "C:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\Schools\\School_A\\School_A.csproj",
       "packagesPath": "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\Schools\\School_A\\obj\\",
+      "outputPath": "C:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\Schools\\School_A\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vinoth.jayakumar\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -3746,7 +3746,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.311\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -26,15 +26,16 @@ namespace UnitTesting.Service
         }
 
         [Fact]
-        public void CreateStudent_ShouldReturnStatusCode200()
+        public async void CreateStudent_ShouldReturnStatusCode200()
         {
             var students = StudentsMock.CreateStudent();
             var studentDetails = StudentsMock.LastStudent();
             _studentDAL.Setup(studentDAL => studentDAL.CreateStudent(students)).Returns(true);
-            _studentDAL.Setup(StudentDAL => StudentDAL.GetParticularStudent()).Returns(studentDetails);
-            _messagingService.Setup(studentDAL => studentDAL.ReceiveMessage()).Returns(true);
+            _studentDAL.Setup(StudentDAL => StudentDAL.GetLastSavedStudent()).Returns(studentDetails);
+            // _messagingService.Setup(studentDAL => studentDAL.ReceiveMessage()).Returns(true);
             var Result = _studentService.CreateStudent(students);
-            Result!.Should().BeTrue();
+            var EndResult = await Result;
+            Assert.True(EndResult);
         }
 
         [Theory]
@@ -42,7 +43,7 @@ namespace UnitTesting.Service
         public void CreateStudent_ShouldReturnStatusCode400_WhenStudetnObjectIsNull(Student student)
         {
             var result = () => _studentService.CreateStudent(student);
-            result.Should().Throw<ValidationException>();
+            result.Should().ThrowAsync<ValidationException>();
         }
 
         [Fact]
@@ -51,7 +52,7 @@ namespace UnitTesting.Service
             var students = StudentsMock.CreateStudent();
             _studentDAL.Setup(studentService => studentService.CreateStudent(students)).Returns(false);
             // var Result = _studentService.CreateStudent(students);
-            Assert.Throws<Exception>(()=>_studentService.CreateStudent(students));
+            Assert.Throws<Exception>(() => _studentService.CreateStudent(students));
         }
 
         [Fact]

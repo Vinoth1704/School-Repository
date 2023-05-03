@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/8c81079e-f278-4633-b0c6-c2641918d169/resourceGroups/IMS/providers/Microsoft.Web/sites/IMSINAPI",
+    "appService.deploySubpath": "bin\\Debug\\net6.0\\publish"
+}

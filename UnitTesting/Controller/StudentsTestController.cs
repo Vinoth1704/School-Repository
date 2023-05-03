@@ -54,7 +54,7 @@ namespace UnitTesting.Controllers
         public void CreateStudent_ShouldReturnStatusCoe200_WithProperData()
         {
             Student student = StudentsMock.CreateStudent();
-            _studentService.Setup(studentService => studentService.CreateStudent(student)).Returns(true);
+            _studentService.Setup(studentService => studentService.CreateStudent(student)).ReturnsAsync(true);
             var result = _studentController.CreateStudent(student) as ObjectResult;
             result!.StatusCode.Should().Be(200);
         }

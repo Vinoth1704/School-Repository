@@ -3691,11 +3691,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\EducationBoard\\EducationBoard.csproj",
+      "projectUniqueName": "D:\\Vinoth\\GITHUB\\School-Repository\\EducationBoard\\EducationBoard.csproj",
       "projectName": "EducationBoard",
-      "projectPath": "c:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\EducationBoard\\EducationBoard.csproj",
+      "projectPath": "D:\\Vinoth\\GITHUB\\School-Repository\\EducationBoard\\EducationBoard.csproj",
       "packagesPath": "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\EducationBoard\\obj\\",
+      "outputPath": "D:\\Vinoth\\GITHUB\\School-Repository\\EducationBoard\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vinoth.jayakumar\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -3789,7 +3789,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.311\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -15,8 +15,8 @@ namespace School.DAL
             StudentValidation.IsStudentValid(student);
             try
             {
-                // _db.Add(student);
-                // _db.SaveChanges();
+                _db.Add(student);
+                _db.SaveChanges();
                 return true;
             }
             catch
