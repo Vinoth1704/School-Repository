@@ -7,12 +7,12 @@ namespace EducationBoard.Services
     public class PerformanceService : IPerformanceService
     {
         private IPerformanceDAL _performanceDAL;
-        private IMapper _mapper;
+        // private IMapper _mapper;
 
-        public PerformanceService(IPerformanceDAL performanceDAL, IMapper mapper)
+        public PerformanceService(IPerformanceDAL performanceDAL)
         {
             _performanceDAL = performanceDAL;
-            _mapper = mapper;
+            // _mapper = mapper; 
         }
 
         public IEnumerable<Performance> GetAllScores()

@@ -6,7 +6,15 @@ namespace EBUnitTesting.MockData
     public static class StudentsMock
     {
 
-        public static List<Student> ListOfStudents()
+        public static IEnumerable<StudentsDTO> ListOfStudents()
+        {
+            List<StudentsDTO> studentMock = new List<StudentsDTO>();
+            studentMock.Add(new StudentsDTO { RollNumber = 10001, StudentName = "Alex", SchoolName = "School A" });
+            studentMock.Add(new StudentsDTO { RollNumber = 10002, StudentName = "Bob", SchoolName = "School A" });
+            studentMock.Add(new StudentsDTO { RollNumber = 10003, StudentName = "Charles", SchoolName = "School A" });
+            return studentMock;
+        }
+        public static IEnumerable<Student> GetAllStudents()
         {
             List<Student> studentMock = new List<Student>();
             studentMock.Add(new Student { RollNumber = 10001, StudentName = "Alex", SchoolID = 1 });

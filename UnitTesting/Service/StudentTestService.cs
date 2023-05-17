@@ -52,7 +52,7 @@ namespace UnitTesting.Service
             var students = StudentsMock.CreateStudent();
             _studentDAL.Setup(studentService => studentService.CreateStudent(students)).Returns(false);
             // var Result = _studentService.CreateStudent(students);
-            Assert.Throws<Exception>(() => _studentService.CreateStudent(students));
+            Assert.ThrowsAsync<Exception>(() => _studentService.CreateStudent(students));
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace UnitTesting.Service
             var students = StudentsMock.CreateStudent();
             _studentDAL.Setup(studentService => studentService.CreateStudent(students)).Throws<ValidationException>();
             var Result = () => _studentService.CreateStudent(students);
-            Result!.Should().Throw<ValidationException>();
+            Result!.Should().ThrowAsync<ValidationException>();
         }
         [Fact]
         public void GetAllStudents_ShouldReturnStatusCode200()

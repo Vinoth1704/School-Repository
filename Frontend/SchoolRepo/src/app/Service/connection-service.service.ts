@@ -7,7 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ConnectionServiceService {
 
-  baseURL: string = 'https://localhost:7257/';
+  // baseURL: string = 'https://localhost:7257/';
+  baseURL: string = 'https://educationapi.azurewebsites.net/';
   constructor(private http: HttpClient) { }
 
   public headers = new HttpHeaders({

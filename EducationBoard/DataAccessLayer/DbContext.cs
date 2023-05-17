@@ -9,10 +9,10 @@ namespace EducationBoard.DAL
         {
     
         }
-        public IEnumerable<Student> GetAllStudents()
-        {
-            return students!.FromSqlRaw("EXEC GetAllStudents").ToList();
-        }
+        // public IEnumerable<Student> GetAllStudents()
+        // {
+        //     return students!.FromSqlRaw("EXEC GetAllStudents").ToList();
+        // }
 
         public DbSet<School>? schools { get; set; }
         public DbSet<Student>? students { get; set; }

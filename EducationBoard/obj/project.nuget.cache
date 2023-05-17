@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0CwiKYP2P9p+Xenz2j04BGiVepV7cyd1p0B8+GtmBlG03DfCVQ3ZejG5ZjnxoudO2d5pwHKi2/thfir97u5Phg==",
+  "dgSpecHash": "tSj4dJOp5AQAVjoGDt2VTqsJbIXrh1IFLtNP/X8gyEqk2XtgOy/dn/OWizIEA6YMzrkUbyF5mxSo88Zxbb6pNw==",
   "success": true,
-  "projectFilePath": "D:\\Vinoth\\GITHUB\\School-Repository\\EducationBoard\\EducationBoard.csproj",
+  "projectFilePath": "D:\\Vinoth\\GITHUB\\School-Repository\\educationboard\\EducationBoard.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

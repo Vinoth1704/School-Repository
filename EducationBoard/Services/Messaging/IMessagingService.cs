@@ -1,7 +1,7 @@
-namespace EducationBoard.Services
-{
-    public interface IMessagingService
-    {
-        public void checkMessage();
-    }
-}
+// namespace EducationBoard.Services
+// {
+//     public interface IMessagingService
+//     {
+//         public void checkMessage();
+//     }
+// }

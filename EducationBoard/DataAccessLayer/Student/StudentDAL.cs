@@ -33,7 +33,8 @@ namespace EducationBoard.DAL
             try
             {
                 // return _db.GetAllStudents();
-                return _db.students!.FromSqlRaw("EXEC GetAllStudents");
+                // return _db.students!.FromSqlRaw("EXEC GetAllStudents");
+                return (from Student in _db.students!.Include(s=>s.school) select Student);
             }
             catch
             {

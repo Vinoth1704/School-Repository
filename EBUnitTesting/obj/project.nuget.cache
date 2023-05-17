@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Oejeh3+EBoh/NqGxlbW1yOXsMj0RO8SoKvNDvP02S/UKMuXdRsGkRwzRZRC29sX6zziflCVnav+w2xSI3FFqTA==",
+  "dgSpecHash": "lA1mfEcJgNwNAZNffN3I4wYRaSvQCkJBv+RSZc+cJtrNR7JBain9SC7Q8XEnMpdkxx1Ha3+FJJW+mElYc3drHA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\EBUnitTesting\\EBUnitTesting.csproj",
+  "projectFilePath": "D:\\Vinoth\\GITHUB\\School-Repository\\ebunittesting\\EBUnitTesting.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
+    "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\azure.core\\1.27.0\\azure.core.1.27.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
@@ -29,7 +31,7 @@
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.aspnetcore.routing.abstractions\\2.2.0\\microsoft.aspnetcore.routing.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\2.1.0\\microsoft.dotnet.platformabstractions.2.1.0.nupkg.sha512",

@@ -21,7 +21,7 @@ namespace EBUnitTesting.Controllers
         }
 
         [Fact]
-        public void ViewAllPerformances_ShouldReturnStatusCode200()
+        public void GetAllScores_ShouldReturnStatusCode200()
         {
             // Arrange
             var Performances = PerformancesMock.ListOfPerformances();
@@ -33,7 +33,7 @@ namespace EBUnitTesting.Controllers
         }
 
         [Fact]
-        public void ViewAllPerformances_ShouldReturnStatusCode500()
+        public void GetAllScores_ShouldReturnStatusCode500()
         {
             _Performanceservice.Setup(Performanceservice => Performanceservice.GetAllScores()).Throws<Exception>();
             var Result = _PerformanceController.GetAllScores() as ObjectResult;
@@ -42,7 +42,7 @@ namespace EBUnitTesting.Controllers
         [Fact]
         public void GetAverage_ShouldReturnStatusCode200()
         {
-            var Performances = PerformancesMock.ListOfPerformances();
+            var Performances = PerformancesMock.ListOfAveragePerformances();
             _Performanceservice.Setup(Performanceservice => Performanceservice.GetAverage()).Returns(Performances);
             var Result = _PerformanceController.GetAverage() as ObjectResult;
             Result!.StatusCode.Should().Be(200);

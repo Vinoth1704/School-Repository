@@ -7,16 +7,21 @@ using Moq;
 using EBUnitTesting.MockData;
 using Xunit;
 using EBUnitTesting.Utility;
+using AutoMapper;
 
 namespace EBUnitTesting.Service
 {
     public class StudentTestService
     {
         private readonly StudentService _studentService;
-        private readonly Mock<IStudentDAL> _studentDAL = new Mock<IStudentDAL>();
+        // private readonly IMapper _mapper;
+        private readonly Mock<IStudentDAL> _studentDAL;
+        private readonly Mock<IMapper> _mapper;
         public StudentTestService()
         {
-            _studentService = new StudentService(_studentDAL.Object);
+            _studentDAL = new Mock<IStudentDAL>();
+            _mapper = new Mock<IMapper>();
+            _studentService = new StudentService(_studentDAL.Object, _mapper.Object);
         }
 
         [Fact]
@@ -53,13 +58,16 @@ namespace EBUnitTesting.Service
             var Result = () => _studentService.CreateStudent(students);
             Result!.Should().Throw<ValidationException>();
         }
+
         [Fact]
         public void GetAllStudents_ShouldReturnStatusCode200()
         {
-            var subjects = SubjectsMock.ListOfSubjects();
-            _studentDAL.Setup(studentDAL => studentDAL.GetAllStudents()).Returns((IEnumerable<Student>)subjects);
+            var students = StudentsMock.GetAllStudents();
+            var studentsDTO = StudentsMock.ListOfStudents();
+            _mapper.Setup(m => m.Map<IEnumerable<StudentsDTO>>(students)).Returns(studentsDTO);
+            _studentDAL.Setup(studentDAL => studentDAL.GetAllStudents()).Returns(students);
             var Result = _studentService.GetAllStudents();
-            Assert.Equal(Result.Count(), subjects.Count);
+            Assert.Equal(Result.Count(), students.Count());
         }
 
         [Fact]

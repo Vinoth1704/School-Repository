@@ -17,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddDbContext<EducationBoardDbContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("School"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("EducationBoard"));
 });
 
 builder.Services.AddTransient<StudentController>();
@@ -27,19 +27,19 @@ builder.Services.AddTransient<IPerformanceDAL, PerformanceDAL>();
 builder.Services.AddTransient<IStudentService, StudentService>();
 builder.Services.AddTransient<ISubjectService, SubjectService>();
 builder.Services.AddTransient<IPerformanceService, PerformanceService>();
-builder.Services.AddTransient<IMessagingService, MessagingService>();
-builder.Services.AddTransient<IMessagingService, MessagingService>();
+// builder.Services.AddTransient<IMessagingService, MessagingService>();
+// builder.Services.AddTransient<IMessagingService, MessagingService>();
 
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddAutoMapper(typeof(AutoMappers).Assembly);
 
-var studentService = builder.Services.BuildServiceProvider().GetService<IStudentService>()!;
-var performanceService = builder.Services.BuildServiceProvider().GetService<IPerformanceService>()!;
-var studentController = builder.Services.BuildServiceProvider().GetService<StudentController>()!;
+// var studentService = builder.Services.BuildServiceProvider().GetService<IStudentService>()!;
+// var performanceService = builder.Services.BuildServiceProvider().GetService<IPerformanceService>()!;
+// var studentController = builder.Services.BuildServiceProvider().GetService<StudentController>()!;
 
-var message = new MessagingService(studentService, performanceService, studentController);
-message.checkMessage();
+// var message = new MessagingService(studentService, performanceService, studentController);
+// message.checkMessage();
 
 builder.Services.AddCors(
     (setup) =>

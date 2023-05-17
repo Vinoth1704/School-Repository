@@ -25,7 +25,7 @@ namespace EBUnitTesting.Service
             var performances = PerformancesMock.ListOfPerformances();
             _PerformanceDAL.Setup(PerformanceDAL => PerformanceDAL.GetAllScores()).Returns(performances);
             var Result = _PerformanceService.GetAllScores();
-            Assert.Equal(Result.Count(), performances.Count);
+            Assert.Equal(Result.Count(), performances.Count());
         }
 
         [Fact]

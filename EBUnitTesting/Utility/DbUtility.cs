@@ -13,7 +13,7 @@ namespace EBUnitTesting.Utility
         }
         public static void SeedInMemoryDb(EducationBoardDbContext dbContext)
         {
-            dbContext.students!.AddRange(StudentsMock.ListOfStudents());
+            dbContext.students!.AddRange(StudentsMock.GetAllStudents());
             dbContext.SaveChanges();
         }
     }

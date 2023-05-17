@@ -45,5 +45,11 @@ namespace EducationBoard.Controllers
                 return Problem(exception.Message);
             }
         }
+
+        [HttpGet]
+        public IActionResult GetData()
+        {
+            return Ok("Successfully connected");
+        }
     }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Vinoth\\GITHUB\\School-Repository\\EducationBoard\\EducationBoard.csproj": {}
+    "D:\\Vinoth\\GITHUB\\School-Repository\\educationboard\\EducationBoard.csproj": {}
   },
   "projects": {
-    "D:\\Vinoth\\GITHUB\\School-Repository\\EducationBoard\\EducationBoard.csproj": {
+    "D:\\Vinoth\\GITHUB\\School-Repository\\educationboard\\EducationBoard.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Vinoth\\GITHUB\\School-Repository\\EducationBoard\\EducationBoard.csproj",
+        "projectUniqueName": "D:\\Vinoth\\GITHUB\\School-Repository\\educationboard\\EducationBoard.csproj",
         "projectName": "EducationBoard",
-        "projectPath": "D:\\Vinoth\\GITHUB\\School-Repository\\EducationBoard\\EducationBoard.csproj",
+        "projectPath": "D:\\Vinoth\\GITHUB\\School-Repository\\educationboard\\EducationBoard.csproj",
         "packagesPath": "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\",
-        "outputPath": "D:\\Vinoth\\GITHUB\\School-Repository\\EducationBoard\\obj\\",
+        "outputPath": "D:\\Vinoth\\GITHUB\\School-Repository\\educationboard\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vinoth.jayakumar\\AppData\\Roaming\\NuGet\\NuGet.Config"
