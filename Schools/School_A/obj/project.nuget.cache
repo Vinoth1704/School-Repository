@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xlCe+2iicFny9Awc1/XfDYTMimaoJlePjIOUoZypTDhGMQX9uzeKuLHTAEHOMxhybxqh6nNqWU/r3ejuA0gQfA==",
+  "dgSpecHash": "ha1iqvQ1jwJopLWgSuvqkA2HAH4kbiBJFdU45nc/ANz0qqjYFl/ya1PWFcjPjE60g/rT1FimG5EZiDZPSJBNcQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\Schools\\School_A\\School_A.csproj",
+  "projectFilePath": "D:\\Vinoth\\GITHUB\\School-Repository\\schools\\school_a\\School_A.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

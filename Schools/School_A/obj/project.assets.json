@@ -3658,11 +3658,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\Schools\\School_A\\School_A.csproj",
+      "projectUniqueName": "D:\\Vinoth\\GITHUB\\School-Repository\\schools\\school_a\\School_A.csproj",
       "projectName": "School_A",
-      "projectPath": "C:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\Schools\\School_A\\School_A.csproj",
+      "projectPath": "D:\\Vinoth\\GITHUB\\School-Repository\\schools\\school_a\\School_A.csproj",
       "packagesPath": "C:\\Users\\vinoth.jayakumar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vinoth.jayakumar\\Documents\\GITHUB\\School-Repository\\Schools\\School_A\\obj\\",
+      "outputPath": "D:\\Vinoth\\GITHUB\\School-Repository\\schools\\school_a\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vinoth.jayakumar\\AppData\\Roaming\\NuGet\\NuGet.Config"
